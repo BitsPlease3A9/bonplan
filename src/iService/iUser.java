@@ -6,7 +6,9 @@
 package iService;
 
 import entite.User;
+import java.sql.SQLException;
 import java.util.List;
+import javafx.collections.ObservableList;
 
 /**
  *
@@ -18,6 +20,7 @@ public interface iUser {
     public void ajouterUser(User u);
     public void supprimerUser(User u);
     public List<User>selectUsers();
+    public User selectUser(int id)throws SQLException;
     public void modifierUser(User u,int id);
     
 }

@@ -30,6 +30,9 @@ import javafx.stage.Stage;
  */
 public class ExperienceController implements Initializable{
 
+    private double xOffset = 0;
+    private double yOffset = 0;
+    
     @FXML
     private JFXButton btnX;
     @FXML
@@ -47,6 +50,17 @@ public class ExperienceController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+                pane1.setOnMousePressed((javafx.scene.input.MouseEvent event) -> {
+                    xOffset = event.getSceneX();
+                    yOffset = event.getSceneY();
+                });
+
+                pane1.setOnMouseDragged((javafx.scene.input.MouseEvent event) -> {
+                    Stage stage = (Stage) pane1.getScene().getWindow();
+                    stage.setX(event.getScreenX()-xOffset);
+                    stage.setY(event.getScreenY()-yOffset);
+                });
+        
         try {
             AnchorPane box = FXMLLoader.load(getClass().getResource("/views/drawerContent.fxml"));
         

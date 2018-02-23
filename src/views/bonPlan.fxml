@@ -13,7 +13,7 @@
 
 <AnchorPane fx:id="pane1" maxHeight="600.0" maxWidth="900.0" minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BonPlanController">
    <children>
-      <JFXTreeTableView fx:id="treeview" currentItemsCount="3" editable="true" layoutX="3.0" layoutY="77.0" prefHeight="520.0" prefWidth="894.0" style="-fx-background-color: transparent; -fx-tree-table-color: transparent; -fx-tree-table-row-color: transparent;" stylesheets="@../Content/style_1.css" tableMenuButtonVisible="true">
+      <JFXTreeTableView fx:id="treeview" currentItemsCount="3" editable="true" layoutX="3.0" layoutY="77.0" onContextMenuRequested="#makeContextMenu" prefHeight="520.0" prefWidth="894.0" style="-fx-background-color: transparent; -fx-tree-table-color: transparent; -fx-tree-table-row-color: transparent;" stylesheets="@../Content/style_1.css" tableMenuButtonVisible="true">
          <effect>
             <DropShadow />
          </effect>

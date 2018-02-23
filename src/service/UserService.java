@@ -6,6 +6,7 @@
 package service;
 
 import connexionDatabase.MyDB;
+import entite.BCrypt;
 import entite.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +37,7 @@ public class UserService implements iService.iUser
         {
         Statement stm = myDB.getConnexion().createStatement();
         String query = "insert into user (username,username_canonical,email,email_canonical,enabled,password,roles,nom,prenom,tel,photo,type) "
-                + "values ('"+u.getUsername()+"','"+u.getUsername()+"','"+u.getEmail()+"','"+u.getEmail()+"',"+u.getEnabled()+",'"+u.getPassword()+"','"+u.getRoles()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getTel()+"','"+u.getPhoto()+"','"+u.getType()+"')";//varchar 'var'
+                + "values ('"+u.getUsername()+"','"+u.getUsername()+"','"+u.getEmail()+"','"+u.getEmail()+"',"+u.getEnabled()+",'"+BCrypt.hashpw(u.getPassword(), BCrypt.gensalt())+"','"+u.getRoles()+"','"+u.getNom()+"','"+u.getPrenom()+"','"+u.getTel()+"','"+u.getPhoto()+"','"+u.getType()+"')";//varchar 'var'
         stm.executeUpdate(query);
             System.out.println("Ajout OK!");
         }
@@ -127,5 +128,28 @@ public class UserService implements iService.iUser
             System.out.println("Problème de Modification");
         }
       }
+
+    @Override
+    public User selectUser(int id) throws SQLException {
+        User u = new User();
+        
+        Statement stm = myDB.getConnexion().createStatement();
+        ResultSet rest=stm.executeQuery("select * from user where id ="+id+"");
+            
+            while(rest.next())
+            {
+                u.setId(rest.getInt(1));
+                u.setUsername(rest.getString(2));
+                u.setEmail(rest.getString(4));
+                u.setPassword(rest.getString(8));
+                u.setNom(rest.getString(13));
+                u.setPrenom(rest.getString(14));
+                u.setTel(rest.getString(15));
+                u.setPhoto(rest.getString(16));
+                u.setType(rest.getString(17));
+            }
+            System.out.println(u.toString());
+            return u;
+    }
     
 }

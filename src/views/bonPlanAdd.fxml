@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXDrawer?>
 <?import com.jfoenix.controls.JFXHamburger?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import com.lynden.gmapsfx.GoogleMapView?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -25,22 +28,26 @@
          <graphic>
             <FontAwesomeIconView glyphName="PLUS" size="30" />
          </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
       </JFXButton>
       <JFXButton fx:id="btnShowPlans" contentDisplay="GRAPHIC_ONLY" layoutX="355.0" layoutY="-2.0" onAction="#makeShowPlans" prefHeight="72.0" prefWidth="64.0">
          <graphic>
             <FontAwesomeIconView glyphName="LIST_ALT" size="30" />
          </graphic>
+         <effect>
+            <DropShadow />
+         </effect>
       </JFXButton>
       <JFXButton fx:id="btnMesPlans" contentDisplay="GRAPHIC_ONLY" layoutX="439.0" layoutY="-2.0" onAction="#makeMesPlans" prefHeight="72.0" prefWidth="64.0">
          <graphic>
             <FontAwesomeIconView glyphName="EDIT" size="30" />
          </graphic>
-      </JFXButton>
-      <JFXTextField fx:id="search" focusColor="#09b6bc" labelFloat="true" layoutX="513.0" layoutY="18.0" maxWidth="232.0" minWidth="232.0" prefHeight="33.0" prefWidth="232.0" promptText="Search" style="-jfx-label-float: white; -fx-text-fill: white; -fx-prompt-text-fill: #97d6ee;" unFocusColor="#97d6ee">
          <effect>
-            <Glow level="0.72" />
+            <DropShadow />
          </effect>
-      </JFXTextField>
+      </JFXButton>
       <JFXDrawer fx:id="drawer" defaultDrawerSize="250.0" layoutX="-1.0" layoutY="-1.0" maxHeight="600.0" maxWidth="250.0" minHeight="600.0" minWidth="46.0" prefHeight="600.0" prefWidth="46.0" />
       <JFXHamburger fx:id="ham1" focusTraversable="true" layoutX="181.0" layoutY="-12.0" prefHeight="90.0" prefWidth="80.0" style="-fx-fill: white;">
          <effect>
@@ -48,28 +55,23 @@
          </effect>
       </JFXHamburger>
       <JFXDrawer layoutX="521.0" layoutY="736.0" />
-      <JFXTextField fx:id="nomBP" labelFloat="true" layoutX="81.0" layoutY="155.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="312.0" promptText="Nom bon plan" style="-jfx-label-float: white; -fx-text-fill: white;">
+      <JFXTextField fx:id="nomBP" labelFloat="true" layoutX="81.0" layoutY="155.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="293.0" promptText="Nom bon plan">
          <effect>
             <Glow level="0.72" />
          </effect>
       </JFXTextField>
-      <JFXTextArea fx:id="descBP" labelFloat="true" layoutX="79.0" layoutY="364.0" prefHeight="185.0" prefWidth="316.0" promptText="Description" />
-      <JFXTextField fx:id="imgBP" labelFloat="true" layoutX="511.0" layoutY="154.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="312.0" promptText="Image bon plan" style="-jfx-label-float: white; -fx-text-fill: white;">
+      <JFXTextArea fx:id="descBP" labelFloat="true" layoutX="79.0" layoutY="384.0" prefHeight="185.0" prefWidth="293.0" promptText="Description" />
+      <JFXTextField fx:id="lieuBP" labelFloat="true" layoutX="523.0" layoutY="478.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="293.0" promptText="Ville">
          <effect>
             <Glow level="0.72" />
          </effect>
       </JFXTextField>
-      <JFXTextField fx:id="lieuBP" labelFloat="true" layoutX="509.0" layoutY="266.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="312.0" promptText="Lieu bon plan" style="-jfx-label-float: white; -fx-text-fill: white;">
+      <JFXTextField fx:id="prixBP" labelFloat="true" layoutX="78.0" layoutY="315.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="293.0" promptText="Prix bon plan">
          <effect>
             <Glow level="0.72" />
          </effect>
       </JFXTextField>
-      <JFXTextField fx:id="prixBP" labelFloat="true" layoutX="509.0" layoutY="378.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="312.0" promptText="Prix bon plan" style="-jfx-label-float: white; -fx-text-fill: white;">
-         <effect>
-            <Glow level="0.72" />
-         </effect>
-      </JFXTextField>
-      <JFXButton fx:id="ajouterBP" layoutX="577.0" layoutY="461.0" onAction="#makeAjouterBP" prefHeight="40.0" prefWidth="167.0" text="Ajouter">
+      <JFXButton fx:id="ajouterBP" layoutX="577.0" layoutY="551.0" onAction="#makeAjouterBP" prefHeight="40.0" prefWidth="167.0" text="Ajouter">
          <graphic>
             <FontAwesomeIconView glyphName="CHECK" size="20" />
          </graphic>
@@ -82,10 +84,17 @@
             <Font name="System Bold" size="22.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="typeBP" labelFloat="true" layoutX="79.0" layoutY="266.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="312.0" promptText="Type bon plan" style="-jfx-label-float: white; -fx-text-fill: white;">
+      <JFXButton fx:id="btnImage" layoutX="515.0" layoutY="192.0" onAction="#addImage" prefHeight="40.0" prefWidth="126.0" text="Select image" />
+      <JFXTextField fx:id="imageBP1" labelFloat="true" layoutX="516.0" layoutY="157.0" maxWidth="312.0" minWidth="232.0" prefHeight="33.0" prefWidth="293.0">
          <effect>
             <Glow level="0.72" />
          </effect>
       </JFXTextField>
+      <GoogleMapView fx:id="mapView" layoutX="519.0" layoutY="243.0" prefHeight="208.0" prefWidth="302.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </GoogleMapView>
+      <JFXComboBox fx:id="typeBP" layoutX="80.0" layoutY="244.0" prefHeight="33.0" prefWidth="293.0" promptText="Type bon plan" visibleRowCount="6" />
    </children>
 </AnchorPane>
